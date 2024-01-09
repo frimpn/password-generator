@@ -93,6 +93,35 @@ function getPasswordOptions() {
 
   let passwordLength = prompt('What number of characters do you want your generated password to have')
 
+  if(passwordLength < 8 ){
+    alert('Please enter number between 8 and 128')
+  }
+
+  if(passwordLength > 128){
+    alert('please enter number between 8 and 128')
+  }
+
+  let includeSpecialCharacters = confirm('Would you like special characters')
+  let includeNumericCharacters = confirm('Would you like numeric characters')
+  let includeLowercaseCharacters = confirm('would you like lowercase characters')
+  let includeUpperCaseCharacters = confirm('would you like uppercase characters')
+
+  if(includeSpecialCharacters){
+  }else if(includeNumericCharacters){    
+  }else if(includeLowercaseCharacters){    
+  }else if(includeUpperCaseCharacters){
+  }else{
+    alert('please select one character type')
+  }
+
+  let PasswordOptions ={
+    passwordLength: passwordLength,
+    includeSpecialCharacters: includeSpecialCharacters,
+    includeNumericCharacters: includeNumericCharacters,
+    includeUpperCaseCharacters: includeUpperCaseCharacters
+  }
+  
+  return PasswordOptions
 
 }
 
