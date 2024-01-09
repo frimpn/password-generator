@@ -92,14 +92,13 @@ var upperCasedCharacters = [
 function getPasswordOptions() {
 
   let passwordLength = prompt('What number of characters do you want your generated password to have')
-
-  if(passwordLength < 8 ){
+  
+  
+  if(passwordLength < 8 || passwordLength > 128){
     alert('Please enter number between 8 and 128')
   }
 
-  if(passwordLength > 128){
-    alert('please enter number between 8 and 128')
-  }
+
 
   let includeSpecialCharacters = confirm('Would you like special characters')
   let includeNumericCharacters = confirm('Would you like numeric characters')
@@ -114,14 +113,15 @@ function getPasswordOptions() {
     alert('please select one character type')
   }
 
-  let PasswordOptions ={
+  let options = {
     passwordLength: passwordLength,
-    includeSpecialCharacters: includeSpecialCharacters,
     includeNumericCharacters: includeNumericCharacters,
-    includeUpperCaseCharacters: includeUpperCaseCharacters
+    includeLowercaseCharacters: includeLowercaseCharacters,
+    includeUpperCaseCharacters: includeUpperCaseCharacters,
+    includeSpecialCharacters: includeSpecialCharacters
   }
-  
-  return PasswordOptions
+
+  return options
 
 }
 
@@ -131,12 +131,51 @@ function getRandom(arr) {
   let random = Math.floor(Math.random() * arr.length)
   let randomElement = arr[random]
 
-  return randomPass
+  return randomElement
 
 }
 
 // Function to generate password with user input
 function generatePassword() {
+let options = getPasswordOptions()
+let combine = []
+let password = ''
+
+
+if(options.includeSpecialCharacters){
+  
+  for(let i of specialCharacters){
+    combine.push(i)
+    
+  }
+  
+}
+
+if(options.includeNumericCharacters){
+  for(let  i of numericCharacters){
+    combine.push(i)
+  }
+}
+
+if(options.includeUpperCaseCharacters){
+  for(let i of upperCasedCharacters){
+    combine.push(i)
+  }
+}
+
+if(options.includeLowercaseCharacters){
+  for(let i of lowerCasedCharacters){
+    combine.push(i)
+  }
+}
+
+for(let i = 0; i < options.passwordLength; i++){
+  password += getRandom(combine)
+}
+
+return password
+
+
 
 }
 
