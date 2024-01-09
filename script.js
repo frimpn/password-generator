@@ -96,6 +96,8 @@ function getPasswordOptions() {
   
   if(passwordLength < 8 || passwordLength > 128){
     alert('Please enter number between 8 and 128')
+  }else{
+    return null
   }
 
 
