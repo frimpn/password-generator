@@ -91,6 +91,7 @@ var upperCasedCharacters = [
 // Function to prompt user for password options
 function getPasswordOptions() {
 
+  let passwordLength = prompt('What number of characters do you want your generated password to have')
 
 
 }
